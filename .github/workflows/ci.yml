@@ -1,0 +1,14 @@
+name: CI
+on:
+  push:
+    branches: [main]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: golangci/golangci-lint:v1.50.1
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Linters
+        run: make lint
+      - name: Run Tests
+        run: make test
